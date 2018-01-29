@@ -16,4 +16,4 @@ jobs:
           name: Run tests
           command: |
             docker-compose up -d
-            sdocker-compose run dockerFlask python test.py
+            docker-compose run dockerFlask python test.py
