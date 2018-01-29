@@ -17,3 +17,12 @@ jobs:
           command: |
             docker-compose up -d
             docker-compose run dockerflask python test.py
+      - deploy:
+          name: Publish docker image
+          command: |
+            docker login -e $DOCKER_HUB_EMAIL -u $DOCKER_HUB_USER_ID -p $DOCKER_HUB_PWD
+            docker tag dockerflask_dockerflask_1 $DOCKER_HUB_USER_ID/dockerflask:$CIRCLE_SHA1
+            docker tag dockerflask_dockerflask_1 $DOCKER_HUB_USER_ID/dockerflask:latest
+            git push $DOCKER_HUB_USER_ID/dockerflask:$CIRCLE_SHA1
+            git push $DOCKER_HUB_USER_ID/dockerflask:latest
+
