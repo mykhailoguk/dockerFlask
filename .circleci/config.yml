@@ -23,8 +23,9 @@ jobs:
             docker login -e $DOCKER_HUB_EMAIL -u $DOCKER_HUB_USER_ID -p $DOCKER_HUB_PWD
             echo "1"
             docker tag dockerflask_dockerflask_1 $DOCKER_HUB_USER_ID/dockerflask:$CIRCLE_SHA1
-            docker tag dockerflask_dockerflask_1 $DOCKER_HUB_USER_ID/dockerflask:latest
             echo "2"
+            docker tag dockerflask_dockerflask_1 $DOCKER_HUB_USER_ID/dockerflask:latest
+            echo "3"
             git push $DOCKER_HUB_USER_ID/dockerflask:$CIRCLE_SHA1
             git push $DOCKER_HUB_USER_ID/dockerflask:latest
 
